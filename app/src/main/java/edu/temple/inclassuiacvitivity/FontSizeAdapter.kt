@@ -21,7 +21,13 @@ class FontSizeAdapter (private val context: Context,
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val textView = TextView(context)
+        val textView : TextView
+
+        if(convertView != null){
+            textView = convertView as TextView
+        }else{
+            textView = TextView(context)
+        }
 
         textView.text = fontSize[position].toString()
 

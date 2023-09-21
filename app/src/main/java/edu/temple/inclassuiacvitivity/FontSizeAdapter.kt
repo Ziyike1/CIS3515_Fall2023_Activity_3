@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import kotlin.math.floor
 
 class FontSizeAdapter (private val context: Context,
                        private val fontSize: Array<Int>): BaseAdapter() {
@@ -21,6 +22,12 @@ class FontSizeAdapter (private val context: Context,
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        return getDropDownView(position, convertView, parent).apply {
+            (this as TextView).textSize = 22f
+        }
+    }
+
+    override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val textView : TextView
 
         if(convertView != null){
